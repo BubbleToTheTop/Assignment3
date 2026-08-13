@@ -1,0 +1,33 @@
+// Constructor.
+Computer::Computer() : speed(0), main_memory(0), harddisk_memory(0)
+{
+    // Initiates an object of type Computer with member variable values of zero.
+}
+// Overloaded constructor.
+Computer::Computer(int s, int mm, int hm) : speed(s), main_memory(mm), harddisk_memory(hm)
+{
+    // Initiates object of type Computer and sets member variables to values provided in arguments.
+}
+// Displays all specifications.
+void Computer::display_specs(ostream& out) const
+{
+    // Output speed, main memory and hard disk memory to desired source.
+    out << speed << "\n"
+        << main_memory << "\n"
+        << harddisk_memory << "\n";
+}
+// Returns speed.
+int Computer::get_speed() const
+{
+    return speed;
+}
+// Returns main memory.
+int Computer::get_mmemory() const
+{
+    return main_memory;
+}
+// Returns hard disk memory.
+int Computer::get_hmemory() const
+{
+    return harddisk_memory;
+}
