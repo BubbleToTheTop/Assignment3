@@ -1,0 +1,32 @@
+class Laptop : public Computer
+{
+public:
+    Laptop(int s, int mm, int hm, double battery, double weight);
+    void display_specs(ostream & out)const;
+    double get_battime()const;
+    double get_weight()const;
+private:
+    double battery_time;
+    double weight;
+};
+
+Laptop::Laptop(int s, int mm, int hm, double battery, double weight) : Computer(s, mm, hm), battery_time(battery), weight(weight)
+{
+
+}
+
+void Laptop::display_specs(ostream& out) const
+{
+    Computer::display_specs(out);
+    out << battery_time << "\n"
+        << weight << "\n";
+}
+double Laptop::get_battime() const
+{
+    return battery_time;
+}
+
+double Laptop::get_weight() const
+{
+    return weight;
+}
