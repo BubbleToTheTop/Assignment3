@@ -1,0 +1,110 @@
+#include <iostream>
+using namespace std;
+
+class Computer
+{
+public:
+ Computer();
+ Computer(int s, int mm, int hm);
+ void display_specs(ostream & out)const;
+ int get_speed()const;
+ int get_mmemory()const;
+ int get_hmemory()const;
+private:
+ int speed;
+ int main_memory;
+ int harddisk_memory;
+};
+
+class Laptop : public Computer
+{
+public:
+    Laptop(int s, int mm, int hm, double battery, double weight);
+    void display_specs(ostream & out)const;
+    double get_battime()const;
+    double get_weight()const;
+private:
+    double battery_time;
+    double weight;
+};
+
+int main()
+{
+    Computer pc(1600, 4, 16);
+    cout << "Printing to console with accessors...\n"
+         << "======================\n"
+         << pc.get_speed() << "\n"
+         << pc.get_mmemory() << "\n"
+         << pc.get_hmemory() << "\n"
+
+         << "======================\n"
+         << "Printing to screen with display specs function...\n";
+    pc.display_specs(cout);
+    cout << "======================\n";
+
+    Laptop hp(1333, 2, 8, 8, 1.25);
+    cout << "Printing to console with accessors...\n"
+         << "======================\n"
+         << hp.get_speed() << "\n"
+         << hp.get_mmemory() << "\n"
+         << hp.get_hmemory() << "\n"
+         << hp.get_battime() << "\n"
+         << hp.get_weight() << "\n"
+         << "======================\n";
+
+}
+// Constructor.
+Computer::Computer() : speed(0), main_memory(0), harddisk_memory(0)
+{
+    // Initiates an object of type Computer with member variable values of zero.
+}
+// Overloaded constructor.
+Computer::Computer(int s, int mm, int hm) : speed(s), main_memory(mm), harddisk_memory(hm)
+{
+    // Initiates object of type Computer and sets member variables to values provided in arguments.
+}
+// Displays all specifications.
+void Computer::display_specs(ostream& out) const
+{
+    // Output speed, main memory and hard disk memory to desired source.
+    out << speed << "\n"
+        << main_memory << "\n"
+        << harddisk_memory << "\n";
+}
+// Returns speed.
+int Computer::get_speed() const
+{
+    return speed;
+}
+// Returns main memory.
+int Computer::get_mmemory() const
+{
+    return main_memory;
+}
+// Returns hard disk memory.
+int Computer::get_hmemory() const
+{
+    return harddisk_memory;
+}
+
+
+Laptop::Laptop(int s, int mm, int hm, double battery, double weight) : Computer(s, mm, hm), battery_time(battery), weight(weight)
+{
+
+}
+
+void Laptop::display_specs(ostream& out) const
+{
+    Computer::display_specs(out);
+    out << battery_time << "\n"
+        << weight << "\n";
+}
+double Laptop::get_battime() const
+{
+    return battery_time;
+}
+
+double Laptop::get_weight() const
+{
+    return weight;
+}
